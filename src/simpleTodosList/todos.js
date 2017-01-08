@@ -73,5 +73,36 @@ var handlers = {
         var addTodoTextInput = document.getElementById("addTodoTextInput");
         todoList.addTodo(addTodoTextInput.value);
         addTodoTextInput.value="";
+    },
+    changeTodo: function () {
+        var changeTodoPositionInput = document.getElementById('changeTodoPositionInput');
+        var changeTodoTextInput = document.getElementById('changeTodoTextInput');
+        todoList.changeTodo(parseInt(changeTodoPositionInput.value),changeTodoTextInput.value)
+        changeTodoTextInput.value="";
+        changeTodoPositionInput.value = "";
+    },
+    deleteTodo: function () {
+        var deleteTodoPositionInput = document.getElementById('deleteTodoPositionInput');
+        todoList.deleteTodo(parseInt(deleteTodoPositionInput.value));
+        deleteTodoPositionInput.value="";
+    },
+    toggleCompleted: function () {
+        var toggleCompletedPositionInput = document.getElementById('toggleCompletedPositionInput');
+        todoList.toggleCompleted(parseInt(toggleCompletedPositionInput.value));
+        toggleCompletedPositionInput.value="";
     }
 };
+
+
+//Nie ma zadnej logiki itp, odpowiada tylko za to co widzi uzytkownik
+var view = {
+    displayTodos:function () {
+        var todosUl = document.querySelector('ul');
+
+        for(var i=0;i<todoList.todos.length;i++){
+            var todoLi = document.createElement('li');
+            todosUl.appendChild(todoLi);
+        }
+
+    }
+}

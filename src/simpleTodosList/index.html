@@ -18,6 +18,26 @@
         <label for="addTodoTextInput"></label><input id="addTodoTextInput" type="text">
     </div>
 
+    <div>
+        <button onClick="handlers.changeTodo()">Change Todo</button>
+        <input id= "changeTodoPositionInput" type = "number">
+        <input id= "changeTodoTextInput" type = "text">
+    </div>
+
+    <div>
+        <button onClick="handlers.deleteTodo()">Delete</button>
+        <input id="deleteTodoPositionInput" type="number">
+    </div>
+
+    <div>
+        <button onClick="handlers.toggleCompleted()">Toggle Completed</button>
+        <input id="toggleCompletedPositionInput" type="number">
+    </div>
+
+    <ul>
+
+    </ul>
+
     <script src="todos.js"></script>
 
 </body>
