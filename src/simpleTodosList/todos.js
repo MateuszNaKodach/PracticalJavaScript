@@ -5,19 +5,19 @@
 var todoList = {
     todos: [],
 
-    displayTodos: function(){
-        if(this.todos.length !== 0)
-            for(var i = 0; i <this.todos.length; i++) {
+    displayTodos: function () {
+        if (this.todos.length !== 0)
+            for (var i = 0; i < this.todos.length; i++) {
                 var todo = this.todos[i];
-                if(todo.completed === true)
-                    console.log('(X)',todo.todoText)
+                if (todo.completed === true)
+                    console.log('(X)', todo.todoText)
                 else
-                    console.log('( )',todo.todoText)
+                    console.log('( )', todo.todoText)
             }
         else
             console.log("Your list is empty!")
     },
-    
+
     addTodo: function (todoText) {
         this.todos.push({
             todoText: todoText,
@@ -25,35 +25,35 @@ var todoList = {
         })
     },
 
-    changeTodo: function(position, todoText){
+    changeTodo: function (position, todoText) {
         this.todos[position].todoText = todoText
     },
 
-    deleteTodo: function(position){
-        this.todos.splice(position,1)
+    deleteTodo: function (position) {
+        this.todos.splice(position, 1)
     },
 
-    toggleCompleted: function(position){
+    toggleCompleted: function (position) {
         var todo = this.todos[position];
         todo.completed = !todo.completed
     },
 
-    getCompletedTodos: function(){
+    getCompletedTodos: function () {
         var completedTodos = 0;
-        for(var i=0;i<this.todos.length;i++){
-            if(this.todos[i].completed)
+        for (var i = 0; i < this.todos.length; i++) {
+            if (this.todos[i].completed)
                 completedTodos++
         }
 
         return completedTodos
     },
 
-    toogleAllto:function(bool){
-        for(var i = 0; i<this.todos.length;i++)
-            this.todos[i].completed=bool
+    toogleAllto: function (bool) {
+        for (var i = 0; i < this.todos.length; i++)
+            this.todos[i].completed = bool
     },
 
-    toogleAll: function() {
+    toogleAll: function () {
         if (this.todos.length === this.getCompletedTodos())
             this.toogleAllto(false)
         else
@@ -62,14 +62,16 @@ var todoList = {
 
 };
 
-
-
-
-todoList.displayTodos()
-todoList.addTodo("Isc zaraz spac")
-todoList.addTodo("Pojde spac o 1")
-todoList.toggleCompleted(0)
-todoList.toggleCompleted(1)
-todoList.displayTodos()
-todoList.toogleAll()
-todoList.displayTodos()
+var handlers = {
+    displayTodos: function () {
+        todoList.displayTodos()
+    },
+    toggleAll: function () {
+        todoList.toogleAll()
+    },
+    addTodo: function () {
+        var addTodoTextInput = document.getElementById("addTodoTextInput");
+        todoList.addTodo(addTodoTextInput.value);
+        addTodoTextInput.value="";
+    }
+};
